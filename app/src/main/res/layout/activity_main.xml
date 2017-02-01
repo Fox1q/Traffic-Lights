@@ -11,37 +11,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="1">
+    android:weightSum="1"
     tools:context="com.fox1q.trafficlight.MainActivity">
 
     <Button
-        android:id="@+id/button_red"
+        android:id="@+id/redBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"
-        android:text="Красный"
-        android:textColor="@color/colorRed" />
+        android:layout_weight="0.1"
+        android:text="@string/red" />
 
     <Button
-        android:id="@+id/button_yellow"
+        android:id="@+id/yellowBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"
-        android:text="Желтый"
-        android:textColor="@color/colorYellow" />
+        android:layout_weight="0.1"
+        android:text="@string/yellow" />
 
     <Button
-        android:id="@+id/button_green"
+        android:id="@+id/greenBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"
-        android:text="Зеленый"
-        android:textColor="@color/colorGreen" />
-
+        android:layout_weight="0.1"
+        android:text="@string/green" />
 </LinearLayout>

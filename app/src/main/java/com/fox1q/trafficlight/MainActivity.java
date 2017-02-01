@@ -3,35 +3,56 @@ package com.fox1q.trafficlight;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private LinearLayout ll;
+    private LinearLayout mainLayout;
+    private int lastColor;
+    Button redBtn;
+    Button greenBtn;
+    Button yellowBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ll = (LinearLayout) findViewById(R.id.activity_main);
+        mainLayout = (LinearLayout) findViewById(R.id.activity_main);
+        redBtn = (Button) findViewById(R.id.redBtn);
+        greenBtn = (Button) findViewById(R.id.greenBtn);
+        yellowBtn = (Button) findViewById(R.id.yellowBtn);
+
+        redBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mainLayout.setBackgroundColor(Color.RED);
+                lastColor = Color.RED;
+            }
+        });
+
+        yellowBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mainLayout.setBackgroundColor(Color.YELLOW);
+                lastColor = Color.YELLOW;
+            }
+        });
+
+        greenBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mainLayout.setBackgroundColor(Color.GREEN);
+                lastColor = Color.GREEN;
+            }
+        });
     }
 
-    public void onClick(TextView view) {
-        switch (view.getId()) {
-            case R.id.button_red:
-                ll.setBackgroundColor(Color.RED);
-                break;
-            case R.id.button_yellow:
-                ll.setBackgroundColor(Color.YELLOW);
-                break;
-            case R.id.button_green:
-                ll.setBackgroundColor(Color.GREEN);
-                break;
-        }
-    }
-
-    protected void onSaveInstanceState(Bundle outState){
+    protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("lastColor", ll.getDrawingCacheBackgroundColor());
+        outState.putInt("lastColor", lastColor);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lastColor = savedInstanceState.getInt("lastColor");
+        mainLayout.setBackgroundColor(lastColor);
     }
 }
